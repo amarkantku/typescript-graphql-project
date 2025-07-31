@@ -3,8 +3,8 @@ import { ApolloServer } from '@apollo/server';
 import express from 'express';
 import cors from 'cors';
 import { expressMiddleware } from '@as-integrations/express5';
-import { typeDefs } from '../src/schema';
-import { resolvers } from '../src/resolvers';
+import { typeDefs } from '../schema';
+import { resolvers } from '../resolvers';
 import serverless from 'serverless-http';
 
 const app = express();
