@@ -1,0 +1,97 @@
+"""
+A user object represents a person who uses the system.
+"""
+type User {
+  """
+  Unique identifier for the user.
+  """
+  id: ID!
+
+  """
+  The user's full name.
+  """
+  name: String!
+
+  """
+  The user's email address.
+  """
+  email: String!
+
+  """
+  The user's age (optional).
+  """
+  age: Int
+}
+
+"""
+Input type for creating a new user.
+"""
+input CreateUserInput {
+  """
+  Full name of the user.
+  """
+  name: String!
+
+  """
+  Email address for the user.
+  """
+  email: String!
+
+  """
+  Age of the user (optional).
+  """
+  age: Int
+}
+
+"""
+Input type for updating existing user information.
+All fields are optional.
+"""
+input UpdateUserInput {
+  """
+  Updated name of the user.
+  """
+  name: String
+
+  """
+  Updated email address.
+  """
+  email: String
+
+  """
+  Updated age.
+  """
+  age: Int
+}
+
+extend type Query {
+  """
+  Fetches all users.
+  """
+  users: [User!]!
+
+  """
+  Fetch a user by their unique ID.
+  """
+  user(id: ID!): User
+}
+
+extend type Mutation {
+  """
+  Creates a new user with the provided information.
+  Returns the created user.
+  """
+  createUser(input: CreateUserInput!): User!
+
+  """
+  Updates an existing user's information by ID.
+  Returns the updated user.
+  """
+  updateUser(id: ID!, input: UpdateUserInput!): User!
+
+  """
+  Deletes a user by their unique ID.
+  Returns true if deletion was successful.
+  """
+  deleteUser(id: ID!): Boolean!
+}
