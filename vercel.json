@@ -1,14 +1,15 @@
 {
   "version": 2,
-  "functions": {
-    "api/graphql.ts": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "api/graphql.ts",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/graphql",
-      "dest": "/api/graphql.ts"
+      "dest": "api/graphql.ts"
     }
   ]
 }
